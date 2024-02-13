@@ -14,6 +14,7 @@ function showTextNode(textNodeIndex) {
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
+  
 
   textNode.options.forEach((option) => {
     if (showOption(option)) {
