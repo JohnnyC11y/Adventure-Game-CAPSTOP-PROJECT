@@ -1,0 +1,36 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: Times New Roman;
+}
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #4d8b93;
+}
+.container {
+  width: 500px;
+  max-width: 50%;
+  background-color: #cecaca;
+  padding: 10px;
+  border-radius: 5px;
+}
+.btn- grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin-top:20px;   
+}
+  .btn {
+    background-color: hsl(113, 30%, 65%);
+    border: 1px solid hsl(132, 27%, 30%);
+    border-radius: 5px; 
+    padding: 5px 10px;
+    color: white; 
+    outline:none; 
+  }
+}
