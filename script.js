@@ -1,21 +1,26 @@
+// Get HTML elements where we display text and buttons//
 const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('option-buttons');
-
+// Keep track of the game state//
 let state = {};
-
+// Function to reset the game//
 function endGame() {
+  // Reset the game state//
   state = {};
+  // Show the first text node//
   showTextNode(1);
 }
-
+// Function to display a specific text node//
 function showTextNode(textNodeIndex) {
+  // Find the text node with the given index//
   const textNode = textNodes.find((textNode) => textNode.id === textNodeIndex);
+   // Display the text//
   textElement.innerText = textNode.text;
+  // Remove existing buttons//
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
-  
-
+  // Create buttons for each option in the text node//
   textNode.options.forEach((option) => {
     if (showOption(option)) {
       const button = document.createElement('button');
@@ -26,21 +31,24 @@ function showTextNode(textNodeIndex) {
     }
   });
 }
-
+// Function to determine if an option should be displayed//
 function showOption(option) {
   return option.requiredState === undefined || option.requiredState(state);
 }
-
+// Function to handle when an option is selected//
 function selectOption(option) {
   const nextTextNodeId = option.nextText;
+  // If next text node ID is less than or equal to 0, end the game//
   if (nextTextNodeId <= 0) {
     endGame();
   }
+  // Update the game state//
   state = Object.assign(state, option.setState);
   showTextNode(nextTextNodeId);
 }
-
+// Array containing different text nodes in the game//
 const textNodes = [
+  // Each text node has an ID, text, and options//
   {
     id: 1,
     text: 'You see a long JavaScript Code approaching you. What do you do?',
@@ -61,6 +69,7 @@ const textNodes = [
     ]
   },
   {
+    //More text nodes//
     id: 2,
     text: 'You have turned right, and see a key placed conveniently on the floor next to a chest. What do you do?',
     options: [
@@ -117,7 +126,8 @@ const textNodes = [
         nextText: 6
       },
       {
-        text: 'Leave and abandon your owner'
+        text: 'Leave and abandon your owner',
+        nextText: 6
       },
       {
         text: 'Bark',
@@ -148,5 +158,5 @@ const textNodes = [
     ]
   }
 ];
-
+// Starts or resets Game// 
  endGame();
