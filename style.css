@@ -32,5 +32,15 @@ body {
     padding: 5px 10px;
     color: white; 
     outline:none; 
+
   }
-}
+  .btn:hover{
+    background-color: hsl(113, 45%, 80%);
+    border: 1px solid hsl(127, 35%, 75%);
+    border-radius: 5px; 
+    padding: 5px 10px;
+    color: white; 
+    outline:none; 
+  }
+  
+
