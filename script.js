@@ -28,11 +28,14 @@ function displayText(text) {
 
 // Check if option should be shown//
 function showOption(option) {
+  // || = *true*(!) if and only if one *or* more of its operands is true// 
+  // used when there is boolon: indicates if the value is true or false//
   return !option.requiredState || option.requiredState(state);
 }
 // Function to handle when an option is selected//
 function selectOption(option) {
   const nextTextNodeId = option.nextText;
+  //? = if true it reutrns the text as undefined when game restarts/the value of endGame// 
   nextTextNodeId <= 0 ? endGame() : updateStateAndShow(nextTextNodeId, option.setState);
 }
 
@@ -64,6 +67,7 @@ const textNodes = [
     id: 1,
     text: 'You see a long JavaScript Code approaching you. What do you do?',
     options: [
+      //* the code knows that right, a right turn set to true is being sellect, hence changing the game current state *//
       { text: 'Turn right', setState: { right: true }, nextText: 2 },
       { text: 'Turn Left', nextText: 6 },
       { text: 'Do complete the Code(attack)', nextText: 6 }
@@ -102,6 +106,7 @@ const textNodes = [
     id: 6,
     text: 'You trigger a pressure plate and a cage drops on you. You are now stuck!',
     options: [
+      // when a value is not 0 it restarts// 
       { text: 'Trapped', nextText: -1 }
     ]
   },
@@ -114,9 +119,5 @@ const textNodes = [
   }
 ];
 
-// Start game
+// Start game/Resets Game, to the first state // 
 endGame();
-
-// Basic math operation
-const result = 2 + 2;
-console.log(result); // Output: 4
